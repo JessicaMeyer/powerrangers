@@ -21,15 +21,7 @@ class Person
 
 end
 
-class PowerRanger < Person
-	
-	attr_accessor :strength, :caffeine_level
-
-	def initialize(name, strength, color)
-		super(name)
-		@strength = strength
-		@color = color
-	end
+module Fight
 
 	def punch(person_to_punch)
 		if @strength >= 5
@@ -40,6 +32,29 @@ class PowerRanger < Person
 		@caffeine_level -= 1
 		@strength -= 1
 	end
+end
+
+class PowerRanger < Person
+	
+	attr_accessor :strength, :caffeine_level
+
+	include Fight
+
+	def initialize(name, strength, color)
+		super(name)
+		@strength = strength
+		@color = color
+	end
+
+	# def punch(person_to_punch)
+	# 	if @strength >= 5
+	# 		puts "#{person_to_punch.name}, was sommersaulted into the air!"
+	# 	else
+	# 		puts "#{person_to_punch.scream} #{person_to_punch.run}"
+	# 	end
+	# 	@caffeine_level -= 1
+	# 	@strength -= 1
+	# end
 
 	def rest
 		@strength += 1
@@ -55,6 +70,8 @@ end
 class EvilNinja < Person
 
 	attr_accessor :strength, :caffeine_level
+	
+	include Fight
 
 	def initialize(name, strength, evilness)
 		super(name)
@@ -62,13 +79,13 @@ class EvilNinja < Person
 		@evilness = evilness
 	end
 
-	def punch(person_to_punch)
-		if @strength >= 2
-			puts "#{person_to_punch.name}, was sommersaulted into the air!"
-		else
-			puts "#{person_to_punch.scream} #{person_to_punch.run}"
-		end
-	end
+	# def punch(person_to_punch)
+	# 	if @strength >= 2
+	# 		puts "#{person_to_punch.name}, was sommersaulted into the air!"
+	# 	else
+	# 		puts "#{person_to_punch.scream} #{person_to_punch.run}"
+	# 	end
+	# end
 
 	def cause_mayhem(person)
 		person.caffeine_level = 0
@@ -76,8 +93,7 @@ class EvilNinja < Person
 	end
 end
 
-def fight_scene(powerranger1, powerranger2, evilninja1, evilninja2, person1, person2)
-	end
+def fight_scene
 
 # ---- Person class ----- #
 
@@ -99,8 +115,12 @@ jess = EvilNinja.new("Jess", 299, "high")
 jess.punch(chris)
 jess.cause_mayhem(joe)
 
+end
+
+fight_scene
+
   
-# 2.1.0 :001 > load 'powerranger.rb'
+# 2.1.0 :003 > load 'powerranger.rb'
 # AHHHHH!
 
 # Joe is getting away!
@@ -111,5 +131,5 @@ jess.cause_mayhem(joe)
 # Joe is knocked out cold.
 # Chris, was sommersaulted into the air!
 # Joe, you are done! You have no more caffeine or strength.
-#  => true  
+#  => true 
 
