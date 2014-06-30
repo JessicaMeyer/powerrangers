@@ -33,9 +33,9 @@ class PowerRanger < Person
 
 	def punch(person_to_punch)
 		if @strength >= 5
-			puts "#{person_to_punch.scream} #{person_to_punch.run}"
-		else
 			puts "#{person_to_punch.name}, was sommersaulted into the air!"
+		else
+			puts "#{person_to_punch.scream} #{person_to_punch.run}"
 		end
 		@caffeine_level -= 1
 		@strength -= 1
@@ -64,9 +64,9 @@ class EvilNinja < Person
 
 	def punch(person_to_punch)
 		if @strength >= 2
-			puts "#{person_to_punch.run} #{person_to_punch.scream}"
-		else
 			puts "#{person_to_punch.name}, was sommersaulted into the air!"
+		else
+			puts "#{person_to_punch.scream} #{person_to_punch.run}"
 		end
 	end
 
@@ -99,20 +99,17 @@ jess = EvilNinja.new("Jess", 299, "high")
 jess.punch(chris)
 jess.cause_mayhem(joe)
 
-# 2.1.0 :019 > load 'powerranger.rb'
+  
+# 2.1.0 :001 > load 'powerranger.rb'
 # AHHHHH!
 
 # Joe is getting away!
 
 # 3
-# AHHHHH!
-# Joe is getting away!
- 
+# Joe, was sommersaulted into the air!
 # Chris is resting!
 # Joe is knocked out cold.
-# Chris is getting away!
-# AHHHHH!
-# , 
+# Chris, was sommersaulted into the air!
 # Joe, you are done! You have no more caffeine or strength.
-#  => true 
+#  => true  
 
